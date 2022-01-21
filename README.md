@@ -40,3 +40,5 @@ int main(int argc, char *argv[])
 
 ```
 
+Most functions start with this sequence :  PUSH EBP, followed by MOV EBP,ESP 
+
