@@ -42,3 +42,20 @@ int main(int argc, char *argv[])
 
 Most functions start with this sequence :  PUSH EBP, followed by MOV EBP,ESP 
 
+
+
+After sending the buffer ([MyVar][EBP][EIP][your code]), ESP will/should point at the beginning of [your code]. So if you can make EIP go to your code,
+ you’re in control.
+
+
+
+1. overflow the  buffer with ( “A" * 500 ) and see if the instruction pointer contains 41414141 which is AAAAA in Hex AND APPLICATION CRACH 
+			
+            ☐ EIP = 41414141  			
+  
+2. Determining the buffer size to write exactly into EIP
+
+
+                  ☐ we send   ( “A” * 1000 + “B” * 1000  )
+                  ☐  If EIP contains an 41414141 (AAAA)  WHICH means EIP sits between 500 and 1000 
+                  ☐  if EIP contains 42424242 (BBBB), EIP sits between 1000 and 2000 
